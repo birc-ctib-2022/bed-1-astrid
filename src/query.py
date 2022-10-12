@@ -24,9 +24,9 @@ class Table:
 
     tbl: dict[str, list[BedLine]] # dictionary with chrom as keys and a list of bedlines as values
 
-    def __init__(self) -> None:      # self?
-        """Create a new table."""
-        self.tbl = defaultdict(lambda: [])
+    def __init__(self) -> None:      # self? data contained within the Table class is tbl. tbl is assigned at the __init__
+        """Create a new table."""    # and assigned as members of self. tbl can then be accessed by the methods
+        self.tbl = defaultdict(lambda: [])  # through the self object
 
     def add_line(self, line: BedLine) -> None:
         """Add line to the table."""

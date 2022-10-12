@@ -18,8 +18,8 @@ def main() -> None:
     argparser.add_argument('query', type=argparse.FileType('r'))
 
     # 'outfile' is either provided as a file name or we use stdout
-    argparser.add_argument('-o', '--outfile',  # use an option to specify this  # why two names?
-                           metavar='output',  # name used in help text          # ?
+    argparser.add_argument('-o', '--outfile',  # use an option to specify this  
+                           metavar='output',  # name used in help text         
                            type=argparse.FileType('w'),  # file for writing
                            default=sys.stdout)
 
@@ -39,8 +39,8 @@ def main() -> None:
         lst = line.split("\t")
         chrom_list = table.get_chrom(lst[0])
         for bedline in chrom_list:
-            if bedline.chrom_start >= int(lst[1]) and bedline.chrom_end < int(lst[2]):
-                print_line(bedline, args.outfile) # how to print to outfile?
+            if bedline.chrom_start >= int(lst[1]) and bedline.chrom_end <= int(lst[2]): # apparently query end is inclusive
+                print_line(bedline, args.outfile)
 
 
    
