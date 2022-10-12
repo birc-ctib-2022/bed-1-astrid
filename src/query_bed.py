@@ -41,7 +41,7 @@ def main() -> None:
         for bedline in chrom_list:
             if bedline.chrom_start >= int(lst[1]) and bedline.chrom_end < int(lst[2]):
                 final = [bedline[0], str(bedline[1]), str(bedline[2]), bedline[3]]
-                print("\t".join(final), args.outfile) # how to print to outfile?
+                print(" ".join(final), args.outfile) # how to print to outfile?
 
 
    
