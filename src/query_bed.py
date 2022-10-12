@@ -40,8 +40,7 @@ def main() -> None:
         chrom_list = table.get_chrom(lst[0])
         for bedline in chrom_list:
             if bedline.chrom_start >= int(lst[1]) and bedline.chrom_end < int(lst[2]):
-                final = [bedline[0], str(bedline[1]), str(bedline[2]), bedline[3]]
-                print(" ".join(final), args.outfile) # how to print to outfile?
+                print_line(bedline, args.outfile) # how to print to outfile?
 
 
    
