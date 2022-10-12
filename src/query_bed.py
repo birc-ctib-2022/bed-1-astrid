@@ -1,4 +1,4 @@
-"""Tool for cleaning up a BED file."""
+"""Tool for cleaning up a BED file.""" # ?
 
 import argparse  # we use this module for option parsing. See main for details.
 
@@ -18,8 +18,8 @@ def main() -> None:
     argparser.add_argument('query', type=argparse.FileType('r'))
 
     # 'outfile' is either provided as a file name or we use stdout
-    argparser.add_argument('-o', '--outfile',  # use an option to specify this
-                           metavar='output',  # name used in help text
+    argparser.add_argument('-o', '--outfile',  # use an option to specify this  # why two names?
+                           metavar='output',  # name used in help text          # ?
                            type=argparse.FileType('w'),  # file for writing
                            default=sys.stdout)
 
@@ -28,6 +28,28 @@ def main() -> None:
 
     # With all the options handled, we just need to do the real work
     # FIXME: put your code here
+    
+    table = Table()
+
+    for line in args.bed:
+        bed_line = parse_line(line)
+        table.add_line(bed_line) # self?
+
+    for line in args.query:
+        lst = line.split("\t")
+        chrom_list = table.get_chrom(lst[0])
+        for bedline in chrom_list:
+            if bedline.chrom_start >= int(lst[1]) and bedline.chrom_end < int(lst[2]):
+                final = [bedline[0], str(bedline[1]), str(bedline[2]), bedline[3]]
+                print("\t".join(final), args.outfile) # how to print to outfile?
+
+
+   
+   # outfile.close()
+
+
+# we want all the bedlines that match our query chromosome section.
+
 
 
 if __name__ == '__main__':

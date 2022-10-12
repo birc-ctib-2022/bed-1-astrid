@@ -31,5 +31,15 @@ def main() -> None:
     # FIXME: put your code here
 
 
+    for line in args.infile:
+        bed_line = parse_line(line)
+        print_line(bed_line, args.outfile) # does it overwrite previous line? No, because we use TextIO
+
+        # args.outfile = print_line(bed_line)
+
+
+
+
+
 if __name__ == '__main__':
     main()

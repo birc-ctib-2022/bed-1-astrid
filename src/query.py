@@ -22,15 +22,15 @@ from collections import defaultdict
 class Table:
     """Table containing bed-lines."""
 
-    tbl: dict[str, list[BedLine]]
+    tbl: dict[str, list[BedLine]] # dictionary with chrom as keys and a list of bedlines as values
 
-    def __init__(self) -> None:
+    def __init__(self) -> None:      # self?
         """Create a new table."""
         self.tbl = defaultdict(lambda: [])
 
     def add_line(self, line: BedLine) -> None:
         """Add line to the table."""
-        self.tbl[line.chrom].append(line)
+        self.tbl[line.chrom].append(line) # appending is possible because the value for each key is a list.
 
     def get_chrom(self, chrom: str) -> list[BedLine]:
         """Get all the lines that sits on chrom"""
