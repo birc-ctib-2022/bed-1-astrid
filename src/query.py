@@ -35,3 +35,4 @@ class Table:
     def get_chrom(self, chrom: str) -> list[BedLine]:
         """Get all the lines that sits on chrom"""
         return self.tbl[chrom]
+        

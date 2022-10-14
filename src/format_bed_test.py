@@ -15,3 +15,4 @@ exp_outfile = 'data/output.bed'
 def test_format_bed() -> None:
     os.system(f"python3 src/format_bed.py {infile} {outfile}")
     assert filecmp.cmp(outfile,exp_outfile)
+

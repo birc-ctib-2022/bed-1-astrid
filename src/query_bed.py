@@ -10,7 +10,7 @@ from query import Table
 
 
 def main() -> None:
-    """Run the program."""
+    """Run the program."""  # a doctest wouldn't make sense as the input/outputs come from the user
     # Setting up the option parsing using the argparse module
     argparser = argparse.ArgumentParser(
         description="Extract regions from a BED file")

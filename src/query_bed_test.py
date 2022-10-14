@@ -19,4 +19,5 @@ def test_query_bed() -> None:
     for i in range(3):
         os.system(f"python3 src/query_bed.py {input_bed} {input_query[i]} -o {out_bedlines[i]}")
         assert filecmp.cmp(out_bedlines[i],exp_bedlines[i])
+
         
