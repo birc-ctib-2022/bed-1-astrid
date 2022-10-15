@@ -31,5 +31,12 @@ def main() -> None:
     # FIXME: put your code here
 
 
+    for line in args.infile:
+        bed_line = parse_line(line)
+        print_line(bed_line, args.outfile)
+
+
+
 if __name__ == '__main__':
     main()
+
