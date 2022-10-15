@@ -65,9 +65,12 @@ When you have implemented the tool, answer the questions below, commit it to Git
 ## Questions
 
 How does your method for extracting features work?
+-  We parse each line in the input bed file and add them to a table that is index by the chromosome name. Then for each query we look at the bedlines of the specified chromosome and print them to our outfile if they have a chromosome position between the query's start and end.
 
-What is the complexity of the algorithm, as a function of the size of the two input files? When you answer this, you need to know that you can get the list of chromosomse from a `query.Table` in constant time, but it does, of course, take longer to run through all the lines in it.
+What is the complexity of the algorithm, as a function of the size of the two input files? When you answer this, you need to know that you can get the list of chromosomes from a `query.Table` in constant time, but it does, of course, take longer to run through all the lines in it.
+- Number of bedlines = n, number of querys = m. Parsing every line in the input as well as adding them to a dictionary runs in O(n). Running through all the querys is in O(m) and inside this loop we look at the chromosome position for a maximum of n bedlines, O(n). Therefore the entire algorithm runs in O(mn).
 
 Did you, at any point, exploit that our features are on single nucleotides and not larger regions?
+No, both the chromosome start and end position of the bedlines are present in the code where we compare to the query's interval. Is should be able to handle general regions.
 
 If you did, what would it take to handle general regions?

@@ -31,21 +31,20 @@ def main() -> None:
     
     table = Table()
 
-    for line in args.bed:
-        bed_line = parse_line(line)
-        table.add_line(bed_line) # self?
+    for line in args.bed:                    # in O(n)
+        bed_line = parse_line(line)  
+        table.add_line(bed_line)     
 
-    for line in args.query:
+    for line in args.query:                  # in O(m)
         lst = line.split("\t")
-        chrom_list = table.get_chrom(lst[0])
-        for bedline in chrom_list:
-            if bedline.chrom_start >= int(lst[1]) and bedline.chrom_end <= int(lst[2]): # apparently query end is inclusive
+        chrom_list = table.get_chrom(lst[0]) # in O(c)
+        for bedline in chrom_list:           # in O(n)
+            if bedline.chrom_start >= int(lst[1]) and bedline.chrom_end <= int(lst[2]): 
                 print_line(bedline, args.outfile)
 
 
    
    # outfile.close()
-
 
 # we want all the bedlines that match our query chromosome section.
 

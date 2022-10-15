@@ -3,7 +3,7 @@
 The code in this module is, again, something we haven't seen yet, but you don't
 need to understand it to use it. It gives you a table where you can insert
 BedLine objects and then access them per chromosome. Create a table and insert
-BED lines it like below, and when you later want to get only the lines relevant
+BED lines in it like below, and when you later want to get only the lines relevant
 for a given chromosome, you can use the get_chrom() method:
 
 >>> from bed import BedLine
@@ -22,7 +22,7 @@ from collections import defaultdict
 class Table:
     """Table containing bed-lines."""
 
-    tbl: dict[str, list[BedLine]] # dictionary with chrom as keys and a list of bedlines as values
+    tbl: dict[str, list[BedLine]] # dictionary with chrom name as keys and a list of bedlines as values
 
     def __init__(self) -> None:      # self? data contained within the Table class is tbl. tbl is assigned at the __init__
         """Create a new table."""    # and assigned as members of self. tbl can then be accessed by the methods
@@ -35,4 +35,3 @@ class Table:
     def get_chrom(self, chrom: str) -> list[BedLine]:
         """Get all the lines that sits on chrom"""
         return self.tbl[chrom]
-        
